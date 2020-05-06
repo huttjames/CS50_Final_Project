@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create a custom query
+{% endblock %}
+
+{% block main %}
+
+    <br><p class="error">{{ error }}</p>
+
+    <form action="/display" method="post">
+
+        <div class="form-group">
+            Language:
+            <select class="form-control" name="language">
+                <option selected value=""></option>
+                {% for dict in dictindex %}
+                    <option value= "{{ dict['tweet_language'] }}" >{{ dict['tweet_language'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            Follower Count:
+            <select class="form-control" name="follower_more_less">
+                <option selected value="more">Greater Than or Equal To</option>
+                <option value="less">Fewer Than</option>
+            </select>
+            <input autocomplete="off" class="form-control" min="0" name="follower_count" value="0" type="number">
+        </div>
+
+
+        <div class="form-group">
+            Tweet Date:
+            <select class="form-control" name="date_more_less">
+                <option selected value="more">After</option>
+                <option value="less">Before</option>
+            </select>
+            <input autocomplete="off" class="form-control" required="required" min="2000-01-01" max="2050-01-01" name="tweet_date" value="2000-01-01" type="date">
+        </div>
+
+
+        <div class="form-group">
+            Is Retweet?:
+            <select class="form-control" name="isretweet">
+                <option selected value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+            Likes Received:
+            <select class="form-control" name="likes_more_less">
+                <option selected value="more">Greater Than or Equal To</option>
+                <option value="less">Fewer Than</option>
+            </select>
+            <input autocomplete="off" class="form-control" min="0" name="like_count" value="0" type="number">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Display Tweets</button>
+        <!--<button class="btn btn-primary" type="submit" formaction="/count">Count Tweets</button>-->
+    </form>
+
+
+
+
+{% endblock %}

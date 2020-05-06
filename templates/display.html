@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Display Filtered Tweets
+{% endblock %}
+
+{% block main %}
+    <main class="container p-5">
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <td colspan="10" align="left"><b>Tweet Count:</b> {{ count }}</td>
+            </tr>
+            <tr>
+                <th>Tweet ID</th>
+                <th>See all tweets by this user</th>
+                <th>Language</th>
+                <th>Time and Date</th>
+                <th>Is Reply?</th>
+                <th>Is Retweet?</th>
+                <th>Like Count</th>
+                <th>Reply Count</th>
+                <th>Hashtags</th>
+                <th class="tweet">Text</th>
+            </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+            {% for index in dictindex %}
+                <tr>
+                    <td>{{ index['tweetid'] }}</td>
+                    <td><form action="/user" method="post"><input hidden name="userid" value = {{ index['userid'] }} type="text"><button type="submit">{{ index['userid'] }}</button></form></td>
+                    <td>{{ index['language'] }}</td>
+                    <td>{{ index['time'] }}</td>
+                    <td>{{ index['isreply'] }}</td>
+                    <td>{{ index['isretweet'] }}</td>
+                    <td>{{ index['likecount'] }}</td>
+                    <td>{{ index['replycount'] }}</td>
+                    <td>{{ index['hashtags'] }}</td>
+                    <td class="tweet">{{ index['text'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    See All Tweets By A User
+{% endblock %}
+
+{% block main %}
+    <script>
+        function selectElement(id, valueToSelect) {
+            $(`#${id}`).val(valueToSelect);
+            console.log("working");
+        }
+        $( document ).ready(function() {
+            selectElement('orderfield', '{{ orderfield }}');
+            selectElement('orderby', '{{ orderby }}');
+            console.log( "ready!" );
+        });
+    </script>
+
+    <form action="/user" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="userid" value =  {{ userid }} type="text">
+        </div>
+        <br><p>Sort by:</p>
+        <div class="form-group">
+        <select class="form-control" name="orderfield" id="orderfield" selected="reply_count">
+            <option value="tweet_time">Date</option>
+            <option value="like_count">Like Count</option>
+            <option value="reply_count">Reply Count</option>
+            <option value="hashtags">Hashtags</option>
+        </select>
+        <select class="form-control" name="orderby" id="orderby">
+            <option value="DESC">Descending</option>
+            <option value="ASC">Ascending</option>
+        </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+
+
+
+
+
+    <main class="container p-5">
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <td colspan="10" align="left"><b>USERNAME:</b> {{ dictindex[1]['user_display_name'] }} <b>USER ID:</b> {{ userid }} <b>Tweet Count:</b> {{ count }}</td>
+            </tr>
+            <tr>
+                <th>Tweet ID</th>
+                <th>Language</th>
+                <th>Time and Date</th>
+                <th>Is Reply?</th>
+                <th>Is Retweet?</th>
+                <th>Like Count</th>
+                <th>Reply Count</th>
+                <th>Hashtags</th>
+                <th class="tweet">Text</th>
+            </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+            {% for index in dictindex %}
+                <tr>
+                    <td>{{ index['tweetid'] }}</a></td>
+                    <td>{{ index['language'] }}</td>
+                    <td>{{ index['time'] }}</td>
+                    <td>{{ index['isreply'] }}</td>
+                    <td>{{ index['isretweet'] }}</td>
+                    <td>{{ index['likecount'] }}</td>
+                    <td>{{ index['replycount'] }}</td>
+                    <td>{{ index['hashtags'] }}</td>
+                    <td class="tweet">{{ index['text'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

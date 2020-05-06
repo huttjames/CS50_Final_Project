@@ -1,0 +1,5 @@
+The full database of over 5mio tweets can be found hosted on my google drive:
+https://drive.google.com/open?id=1GCb77CPzM4N_omcsHSewXzWozlt2Bs0E
+
+A screenshot showing the database locally stored can be viewed at the following image file, also on my google drive:
+https://drive.google.com/open?id=1lB27yAbM_GO2YVGcLLGtKp3EXU753PqP

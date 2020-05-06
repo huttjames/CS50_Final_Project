@@ -1,0 +1,8 @@
+This Github code for transferring the Twitter databases as CSV files into separate SQL databases is copied and adapted from:
+https://github.com/leopck/csvSqlPython
+
+Troubleshooting for various bugs taken from:
+https://www.shanelynn.ie/pandas-csv-error-error-tokenizing-data-c-error-eof-inside-string-starting-at-line/
+https://stackoverflow.com/questions/52105659/pandas-read-csv-unexpected-end-of-data-error
+https://stackoverflow.com/questions/18039057/python-pandas-error-tokenizing-data
+https://github.com/pandas-dev/pandas/issues/5500
